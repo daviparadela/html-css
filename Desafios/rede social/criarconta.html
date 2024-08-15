@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie sua conta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .password-rules {
+            font-size: 12px;
+            margin: 5px 0;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Crie sua conta</h2>
+    <form id="formulario" action="#" method="post">
+        <!-- Campo de nome completo -->
+        <div class="form-group">
+            <label for="nome-completo">Nome completo:</label>
+            <input type="text" id="nome-completo" name="nome-completo" required>
+        </div>
+
+        <!-- Campo de usuário -->
+        <div class="form-group">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" required>
+        </div>
+
+        <!-- Campo de senha -->
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" maxlength="6" required>
+            <div class="password-rules">
+                A senha deve conter:
+                <ul>
+                    <li>Letras maiúsculas e minúsculas</li>
+                    <li>Números</li>
+                    <li>Exatamente 6 dígitos</li>
+                </ul>
+            </div>
+            <div id="senha-error" class="error-message">Senha inválida. Verifique se está de acordo com as regras.</div>
+        </div>
+
+        <!-- Campo de repetir senha -->
+        <div class="form-group">
+            <label for="repetir-senha">Repetir senha:</label>
+            <input type="password" id="repetir-senha" name="repetir-senha" maxlength="6" required>
+            <div id="repetir-senha-error" class="error-message">As senhas não coincidem.</div>
+        </div>
+
+        <!-- Campo de e-mail -->
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Campo de telefone -->
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+        </div>
+
+        <!-- Botão para criar a conta -->
+        <div class="form-group">
+            <button type="button" id="criar-conta">Criar Conta</button>
+        </div>
+    </form>
+</div>
+
+<!-- Rodapé personalizado -->
+<footer>
+    <p>&copy; 2024 Empresa XYZ. Todos os direitos reservados.</p>
+    <p>Contato: (11) 1234-5678 | contato@empresa.com</p>
+</footer>
+
+<script>
+    const formulario = document.getElementById('formulario');
+    const senha = document.getElementById('senha');
+    const repetirSenha = document.getElementById('repetir-senha');
+    const senhaError = document.getElementById('senha-error');
+    const repetirSenhaError = document.getElementById('repetir-senha-error');
+
+    function validarSenha(senha) {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6}$/;
+        return regex.test(senha);
+    }
+
+    document.getElementById('criar-conta').addEventListener('click', function() {
+        let valid = true;
+
+        if (!validarSenha(senha.value)) {
+            senha.classList.add('invalid');
+            senhaError.style.display = 'block';
+            valid = false;
+        } else {
+            senha.classList.remove('invalid');
+            senhaError.style.display = 'none';
+        }
+
+        if (senha.value !== repetirSenha.value) {
+            repetirSenha.classList.add('invalid');
+            repetirSenhaError.style.display = 'block';
+            valid = false;
+        } else {
+            repetirSenha.classList.remove('invalid');
+            repetirSenhaError.style.display = 'none';
+        }
+
+        if (valid) {
+            // Armazenar as informações do usuário
+            const usuario = document.getElementById('usuario').value;
+            const senha = document.getElementById('senha').value;
+
+            localStorage.setItem('usuario', usuario);
+            localStorage.setItem('senha', senha);
+
+            // Redirecionar para a página de login
+            window.location.href = 'login.html'; // Substitua pelo caminho real da sua página de login
+        }
+    });
+</script>
+
+</body>
+</html>

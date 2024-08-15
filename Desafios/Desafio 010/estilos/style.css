@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Syncopate:wght@400;700&display=swap'); /* Font importada do google fonts*/
+
+@font-face {
+    font-family: "android";
+    src: url('../fontes/SyncopateB.ttf') format('opentype');
+    font-weight: normal;
+}
+
+:root {
+    --cor1: #015321;
+    --cor2: #04752f;
+    --cor3: #00a349;
+    --cor4: #3fd482;
+    --cor5: #b2f1cf;
+
+    --font-padrao: arial, verdana, helvetica, sans-serif; 
+    
+    --font-destaque: "Syncopate", sans-serif;
+
+    --font-android: "android, cursive";
+}    /* Tudo que eu por em root, irá servir pro documento inteiro( Variáveis Globais, Sempre começando com "--" dois traços. )*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+} /* Tudo que eu por em root, irá servir pro documento inteiro*/
+
+body {
+    background-color: #a5ffcd;
+    font-family: var(--font-padrao);
+}
+
+a.externo::after {
+    content:'\1F517' ;
+}
+
+header {
+    background-image: linear-gradient(to bottom, var(--cor5), var(--cor1
+    ));
+    min-height: 150px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+
+
+header > h1 {
+    color: #ffffff;
+    font-family: var(--font-destaque);
+    
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px rgba(8, 8, 8, 0.61);
+    
+}
+header > p {
+    color: rgb(255, 255, 255);
+    font-family: var(--font-padrao);
+    font-size: 1em;
+    max-width: 500px;
+    margin:auto;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+}
+
+nav {
+    background-color: var(--cor1);
+    box-shadow: 0px 5px 10px;
+}
+nav > a {
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: .5s;
+}
+nav a:hover {
+    background-color: var(--cor3);
+    color: white;
+}
+
+main {
+    min-width: 300px;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px black;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+main > h1 {
+    
+    color: var(--cor2);
+    font-family: var(--font-destaque); 
+    
+}
+
+main h2 {
+    font-family: var(--font-destaque);
+    color: var(--cor1);
+    font-size: 1.3em;
+    background-image: linear-gradient(to right, var(--cor4), var(--cor5), transparent);
+    text-indent: 8px;
+}
+
+main  p {
+    margin: 15px 0px 15px 0px;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+
+
+main img {
+    width: 100%;
+}
+main img.pequena {
+    max-width: 350px;
+    display: block;
+    margin: auto;
+
+}
+main strong {
+    color: var(--cor1);
+    font-weight: bold;
+}
+main a {
+    text-decoration: none;
+    font: bold;
+    color: var(--cor1);
+    background-color: var(--cor4);
+    padding: 2px 6px;
+    border-radius: 5px;
+
+}
+
+main a:hover {
+    text-decoration: underline;
+    color: var(--cor3);
+
+}
+
+.video {
+    background-color: var(--cor1);
+    margin: 0px -20px 30px -20px;
+    padding: 20px;
+    position: relative;
+    padding-bottom: 56.7%;
+
+}
+
+.video > iframe {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+
+aside {
+    background-color: var(--cor5);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.342);
+}
+
+aside h3 {
+    background-color: var(--cor1);
+    color: white;
+    padding: 10px;
+    margin: -10px -10px 0px -10px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px ;
+}
+
+aside > ul {
+    list-style-type: '\2714\00A0\00A0';
+    list-style-position: 
+    inside;
+    columns: 2;
+}
+
+footer {
+    background-color: var(--cor1);
+    color: white;
+    font-size: 0.8em;
+    line-height: 2em;
+    text-align: center;
+    padding: 5px;
+}
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor5);
+}

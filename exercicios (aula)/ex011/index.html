@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagenns Dinâmicas</title>
+</head>
+<body>
+    <h1>Imagens Dinâmicas</h1>
+    <p>Imagens adptáveis para qualquer dispositivo, smartphone, tablet, tv, celular, computador, etc...</p>
+    <picture>
+        <source media="(max-width: 750px)" srcset="imagens/P.png" type="image/png">
+        <source media="(max-width: 1050px)" srcset="imagens/M.png" type="image/png">
+        <img src="imagens/G.png" alt="Imagem Flexível">
+    </picture>
+    <h1>reproduzindo Aúdio</h1>
+    <p>Vamos aprender a reproduzir aúdio em HTML</p>
+    <audio src="midias/nossa-postura-ft-russ-millions-prod-dj-alle-da-coro-clipe-oficial.mp3" controls ></audio> <!-- MP3 WAV OGG-->
+    <audio preload="auto" controls loop>
+        <source src="midias/nossa-postura-ft-russ-millions-prod-dj-alle-da-coro-clipe-oficial.mp3" type="audio/mpeg">
+        <source src="midias/nossa-postura-ft-russ-millions-prod-dj-alle-da-coro-clipe-oficial.mp3" type="audio/OGG">
+    </audio>  <!-- serve para caso não conseguir reproduzir um, tentara com a outra versão como oOGG WAV MP3 -->
+</body>
+</html>

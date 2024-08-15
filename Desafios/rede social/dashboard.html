@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5f8fa;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode body {
+            background-color: #14171A;
+            color: #E1E8ED;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #e1e8ed; /* Cinza claro */
+            color: black;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .sidebar {
+            background-color: #2C3E50; /* Cinza escuro */
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: black; /* Preto no modo claro */
+        }
+
+        .dark-mode .sidebar h2 {
+            color: #ffffff; /* Branco no modo escuro */
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .sidebar ul li a {
+            color: #AAB8C2;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+            color: #0d8ddb;
+        }
+
+        .dark-mode .sidebar ul li a:hover {
+            color: #1A8C9A;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e8ed;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .top-bar {
+            border-bottom-color: #333;
+        }
+
+        .top-bar .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .top-bar .profile .name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1DA1F2;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .top-bar .profile .name {
+            color: #000000; /* Preto */
+            border-bottom: 2px solid #1DA1F2;
+            padding-bottom: 2px;
+        }
+
+        .top-bar .profile .verified {
+            font-size: 14px;
+            color: #1DA1F2;
+        }
+
+        .dark-mode .top-bar .profile .verified {
+            color: #1DA1F2;
+        }
+
+        .create-post {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .dark-mode .create-post {
+            background-color: #1A1F24;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .create-post textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            height: 100px;
+            font-size: 16px;
+            color: #1DA1F2;
+            margin-bottom: 10px;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .create-post textarea {
+            border-color: #2C3E50;
+            color: #E1E8ED;
+        }
+
+        .create-post textarea::placeholder {
+            color: #aab8c2;
+        }
+
+        .dark-mode .create-post textarea::placeholder {
+            color: #6C757D;
+        }
+
+        .create-post .image-upload {
+            margin-top: 10px;
+        }
+
+        .create-post .image-upload img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        .feed {
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .feed {
+            background-color: #1A1F24;
+        }
+
+        .feed .empty-message {
+            text-align: center;
+            color: #aab8c2;
+            font-size: 16px;
+        }
+
+        .dark-mode .feed .empty-message {
+            color: #6C757D;
+        }
+
+        .feed .post {
+            padding: 15px;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        .dark-mode .feed .post {
+            border-bottom-color: #333;
+        }
+
+        .feed .post:last-child {
+            border-bottom: none;
+        }
+
+        .feed .post h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .dark-mode .feed .post h3 {
+            color: #E1E8ED;
+        }
+
+        .feed .post p {
+            font-size: 16px;
+            color: #657786;
+        }
+
+        .dark-mode .feed .post p {
+            color: #AAB8C2;
+        }
+
+        .right-sidebar {
+            width: 250px;
+            padding: 20px;
+            background-color: #e1e8ed; /* Cinza claro */
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .right-sidebar {
+            background-color: #2C3E50; /* Cinza escuro */
+        }
+
+        .right-sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .dark-mode .right-sidebar h3 {
+            color: #E1E8ED;
+        }
+
+        .right-sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .right-sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .right-sidebar ul li a {
+            color: #1DA1F2;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .dark-mode .right-sidebar ul li a {
+            color: #AAB8C2;
+        }
+
+        .right-sidebar ul li a:hover {
+            text-decoration: underline;
+            color: #0d8ddb;
+        }
+
+        .dark-mode .right-sidebar ul li a:hover {
+            color: #1A8C9A;
+        }
+
+        .right-sidebar .toggle-theme {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .right-sidebar .toggle-theme button {
+            background-color: #1DA1F2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .right-sidebar .toggle-theme button {
+            background-color: #2C3E50;
+        }
+
+        .right-sidebar .toggle-theme button:hover {
+            background-color: #0d8ddb;
+        }
+
+        .dark-mode .right-sidebar .toggle-theme button:hover {
+            background-color: #1A8C9A;
+        }
+
+        footer {
+            background-color: #e1e8ed; /* Cinza claro */
+            color: black;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode footer {
+            background-color: #2C3E50; /* Cinza escuro */
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Mensagens</a></li>
+        <li><a href="#">Notificações</a></li>
+        <li><a href="#">Perfil</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <div class="top-bar">
+        <div class="profile">
+            <img src="imagens/perfil.jpg" alt="Foto de Perfil">
+            <div class="profile-info">
+                <div class="name">Davi Paradela</div>
+                <div class="verified" aria-label="Conta verificada">✔️</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="create-post">
+        <textarea id="post-text" placeholder="O que está pensando?"></textarea>
+        <input type="file" id="post-image" class="image-upload">
+        <img id="preview-image" style="display: none;">
+    </div>
+
+    <div class="feed">
+        <div class="empty-message">Siga mais pessoas para ficar Ligado</div>
+    </div>
+</div>
+
+<div class="right-sidebar">
+    <h3>Menu</h3>
+    <ul>
+        <li><a href="#">Feed</a></li>
+        <li><a href="#">Trends</a></li>
+        <li><a href="#">Top Assuntos</a></li>
+        <li><a href="#">Buscar</a></li>
+        <li><a href="#">Configurações</a></li>
+    </ul>
+    <div class="toggle-theme">
+        <button id="dark-mode-toggle">Modo Escuro</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Empresa XYZ. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    document.getElementById('post-text').addEventListener('focus', function() {
+        this.placeholder = '';
+    });
+
+    document.getElementById('post-text').addEventListener('blur', function() {
+        if (this.value === '') {
+            this.placeholder = 'O que está pensando?';
+        }
+    });
+
+    document.getElementById('post-image').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const previewImage = document.getElementById('preview-image');
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Por favor, selecione uma imagem válida.');
+        }
+    });
+
+    document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        this.textContent = document.body.classList.contains('dark-mode') ? 'Modo Claro' : 'Modo Escuro';
+    });
+</script>
+
+</body>
+</html>

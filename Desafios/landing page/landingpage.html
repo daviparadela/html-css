@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutricionista - Saúde e Bem-Estar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f7f7;
+            background-image: url('nutri.avif'); /* Substitua pelo caminho da sua imagem */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com transparência */
+            padding: 20px;
+        }
+
+        header {
+            background-color: transparent;
+            color: white;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #61892f;
+        }
+
+        #hero {
+            color: #333;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        #hero .cta-button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #86c232;
+            color: white;
+            border-radius: 50px;
+            padding: 10px 10px;
+            margin-top: 60px; /* Adiciona um espaço acima do botão */
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #hero .cta-button:hover {
+            background-color: #333;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            position: relative; /* Necessário para a foto flutuante */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #61892f;
+        }
+
+        .service-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .contact-buttons a,
+        .contact-buttons button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #86c232;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-buttons a:hover,
+        .contact-buttons button:hover {
+            background-color: #333;
+        }
+
+        .contact-buttons img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .contact-buttons button {
+            cursor: pointer;
+        }
+
+        .contact-buttons button:active::after {
+            content: "Texto copiado";
+            display: block;
+            margin-top: 5px;
+            color: green;
+        }
+
+        footer {
+            background-color: transparent;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .profile-photo {
+            width: 150px; /* Tamanho médio da foto */
+            height: 150px;
+            border-radius: 50%; /* Arredonda a foto */
+            position: relative; /* Alinhamento em relação à seção */
+            margin: 0 auto 20px; /* Centraliza a foto e adiciona espaço abaixo */
+            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra da foto */
+            border: 3px solid #fff; /* Borda branca para destacar a foto */
+        }
+
+        #about {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <nav>
+                <div class="logo">NutriVida</div>
+                <ul>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="hero">
+            <div class="hero-text">
+                <h1>Alcance uma Vida Saudável com Nutrição Personalizada</h1>
+                <p>Transforme sua alimentação e melhore sua qualidade de vida com a ajuda de um nutricionista profissional.</p>
+                <a href="#contact" class="cta-button">Agende uma Consulta</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <img src="foto-perfil.jpg" alt="Foto de Perfil" class="profile-photo"> <!-- Adicione a foto de perfil aqui -->
+            <h2>Sobre Mim</h2>
+            <p>Sou uma nutricionista dedicada a ajudar você a alcançar seus objetivos de saúde por meio de uma alimentação equilibrada e personalizada.</p>
+        </section>
+
+        <section id="services">
+            <h2>Serviços</h2>
+            <div class="service-card">
+                <h3>Consultas Nutricionais</h3>
+                <p>Avaliação completa e plano alimentar personalizado.</p>
+            </div>
+            <div class="service-card">
+                <h3>Planejamento de Refeições</h3>
+                <p>Criação de cardápios semanais adaptados ao seu estilo de vida.</p>
+            </div>
+            <div class="service-card">
+                <h3>Acompanhamento Contínuo</h3>
+                <p>Suporte e ajustes ao plano alimentar para garantir resultados.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contato</h2>
+            <p>Entre em contato conosco e agende sua consulta.</p>
+            <form>
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+        
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+        
+                <button type="submit">Enviar</button>
+            </form>
+        
+            <div class="contact-buttons">
+                <a href="https://wa.me/21984263984" target="_blank" class="whatsapp-button">
+                    <img src="iconwpp.png" alt="WhatsApp" /> WhatsApp
+                </a>
+                <button onclick="copyPhoneNumber()">
+                    <img src="phone-icon.png" alt="Telefone" />Telefone
+                </button>
+                <a href="https://maps.app.goo.gl/1SQdCndiSGqXKU3M6" target="_blank" class="maps-button">
+                    <img src="google-maps-logo.png" alt="Google Maps" /> Nossa Loja
+                </a>
+            </div>
+        </section>
+        
+
+        <footer>
+            <p>&copy; 2024 NutriVida. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyPhoneNumber() {
+            const phoneNumber = "21984263984"; // Substitua pelo número de telefone
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    alert("Número de telefone copiado!");
+                })
+                .catch(err => {
+                    console.error("Falha ao copiar o número:", err);
+                });
+        }
+    </script>
+</body>
+</html>
