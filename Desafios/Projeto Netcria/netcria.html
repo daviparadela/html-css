@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>NetCria</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Honk&family=Matemasie&family=Syncopate:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('capas/fundo.avif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      background-color: rgba(10, 10, 10, 0.61);
+      min-height: 100px;
+      text-align: center;
+      padding-top: 40px;
+      position: relative;
+    }
+
+    header > h1 {
+      font-family: "Matemasie", sans-serif;
+      color: rgba(201, 15, 15, 0.637);
+      margin-bottom: 20px;
+      font-size: 4em;
+      text-shadow: 2px 2px 2px white;
+    }
+
+    .profile-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: inline-block;
+    }
+
+    .profile-picture {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
+    }
+
+    .profile-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      border-radius: 5px;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+      width: 200px;
+    }
+
+    .profile-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .profile-menu ul li {
+      padding: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .profile-menu ul li:last-child {
+      border-bottom: none;
+    }
+
+    .profile-menu ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .profile-menu ul li a:hover {
+      text-decoration: underline;
+    }
+
+    textarea {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      margin: auto;
+      padding: 10px 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      box-sizing: border-box;
+    }
+
+    nav {
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav > a {
+      color: white;
+      margin: 0 10px;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.5s;
+    }
+
+    nav a:hover {
+      background-color: grey;
+      color: white;
+    }
+
+    main {
+      max-width: 1040px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 0px 10px black;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      z-index: 1; /* Ajuste do z-index */
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      min-width: 15%;
+      box-sizing: border-box;
+      margin: 5px;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item img:hover {
+      transform: scale(1.03);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 2; /* Ajuste do z-index */
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    .results-container {
+      position: absolute;
+      top: 231px; /* Ajuste a partir do topo do main */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ccc;
+      opacity: 0;
+      display: block;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(250, 250, 250, 0.1);
+      width: 80%;
+      max-width: 500px;
+      transition: opacity 0.5s ease;
+      z-index: 3; /* Ajuste do z-index */
+    }
+
+    .results-container.show {
+      opacity: 1;
+    }
+
+    .results-container.hide {
+      opacity: 0;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .results-table th,
+    .results-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .results-table th {
+      background-color: #f4f4f4;
+    }
+
+    .results-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .results-table td img {
+      width: 50px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .results-table td {
+      display: flex;
+      align-items: center;
+    }
+
+    .results-table td span {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NetCria</h1>
+    <div class="profile-container">
+      <img src="capas/perfil.jpg" alt="Foto de Perfil" class="profile-picture" id="profilePicture"/>
+      <div class="profile-menu" id="profileMenu">
+        <ul>
+          <li><a href="#">Configurações da Conta</a></li>
+          <li><a href="#">Privacidade</a></li>
+          <li><a href="#">Baixados</a></li>
+          <li><a href="loginnetcria.html">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="netcria.html">Início</a>
+    <a href="#">Filmes</a>
+    <a href="#">Séries</a>
+  </nav>
+  
+  <textarea id="search" placeholder="Buscar Filme/Série"></textarea>
+
+  <div class="results-container hide" id="resultsContainer">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Imagem</th>
+          <th>Título</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody">
+        <!-- Resultados serão adicionados aqui -->
+      </tbody>
+    </table>
+  </div>
+  
+  <main>
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-item">
+          <a href="#filme1">
+            <img src="capas/vida de inseto.png" alt="Vida de Inseto">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme2">
+            <img src="capas/harry.jpg" alt="Harry Potter">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme3">
+            <img src="capas/a menina e o dragao.jpg" alt="A Menina e o Dragão">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme4">
+            <img src="capas/acabana.jpg" alt="A Cabana">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme5">
+            <img src="capas/dumbledore.jpg" alt="Animais Fantásticos">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme6">
+            <img src="capas/O_hobbit.jpg" alt="o hobbit">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme7">
+            <img src="capas/profecia.jpg" alt="profecia">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme8">
+            <img src="capas/ursinhopo.jpg" alt="ursinho po">
+          </a>
+        </div>
+        <div class="carousel-item">
+          <a href="#filme9">
+            <img src="capas/moana.jpeg" alt="moana">
+          </a>
+        </div>
+      </div>
+      <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+      <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+  </main>
+
+  <script>
+    // Mostrar e ocultar a tabela de resultados
+    document.getElementById('search').addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      const resultsContainer = document.getElementById('resultsContainer');
+      const resultsBody = document.getElementById('resultsBody');
+
+      if (query) {
+        resultsContainer.classList.remove('hide');
+        resultsContainer.classList.add('show');
+        // Aqui você pode adicionar lógica para filtrar e exibir resultados reais
+        resultsBody.innerHTML = `
+          <tr>
+            <td><img src="capas/vida de inseto.png" alt="Vida de Inseto"></td>
+            <td><span>Vida de Inseto</span></td>
+          </tr>
+          <tr>
+            <td><img src="capas/harry.jpg" alt="Harry Potter"></td>
+            <td><span>Harry Potter</span></td>
+          </tr>
+          <tr>
+            <td><img src="capas/a menina e o dragao.jpg" alt="A Menina e o Dragão"></td>
+            <td><span>A Menina e o Dragão</span></td>
+          </tr>
+          <tr>
+            <td><img src="capas/animais.jpg" alt="Animais Fantásticos"></td>
+            <td><span>Animais Fantásticos</span></td>
+          </tr>
+        `;
+      } else {
+        resultsContainer.classList.remove('show');
+        resultsContainer.classList.add('hide');
+        resultsBody.innerHTML = '';
+      }
+    });
+
+    // Script para o carrossel
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      const slides = document.querySelectorAll('.carousel-item');
+      const totalSlides = slides.length;
+
+      if (index >= totalSlides) currentIndex = totalSlides - 1;
+      if (index < 0) currentIndex = 0;
+      
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+      });
+    }
+
+    function nextSlide() {
+      const slides = document.querySelectorAll('.carousel-item');
+      if (currentIndex < slides.length - 1) {
+        currentIndex++;
+        showSlide(currentIndex);
+      }
+    }
+
+    function prevSlide() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        showSlide(currentIndex);
+      }
+    }
+
+    // Script para abrir e fechar o menu de perfil
+    document.getElementById('profilePicture').addEventListener('click', function() {
+      const profileMenu = document.getElementById('profileMenu');
+      profileMenu.style.display = profileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Fechar o menu ao clicar fora
+    document.addEventListener('click', function(event) {
+      const profileMenu = document.getElementById('profileMenu');
+      if (!profileMenu.contains(event.target) && event.target.id !== 'profilePicture') {
+        profileMenu.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
