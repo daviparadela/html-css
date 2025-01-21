@@ -10,19 +10,11 @@
   padding: 0px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Spicy+Rice&display=swap');
-
-
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Permanent+Marker&family=Spicy+Rice&display=swap');
 
 
 
 :root {
-    --font1: "Spicy Rice", serif;
-    --font2: "Permanent Marker", serif;
-    --font3: "Pacifico", serif;
+    --font1: 
 
 }
 
@@ -30,7 +22,7 @@
 html, body {
     min-height: 100vh;
     background-color: darkgray;
-    font-family: var(--font3);
+    font-family: var(--font2);
 }
 
 
@@ -54,11 +46,14 @@ header {
 header > h1 {
     padding-top: 50px;
     font-variant: small-caps;
-    font-family: var(--font3);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3.5em;
+
 }
 
 header > p {
     padding-bottom: 50px;
+    font-size: 1em;
 }
 
 a {
@@ -88,6 +83,8 @@ section{
     padding-bottom: 10vh;
     line-height: 2em;
     padding-left: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Haettenschweiler, 'Arial Narrow Bold', sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Times, serif, Cochin, Georgia, Times, 'Times New Roman', serif, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, Helvetica, sans-serif;
+    font-size: 1.5em;
 }
 
 section.normal {
@@ -103,7 +100,8 @@ section.imagem  {
 
 section.imagem > p {
     background-color: rgba(65, 64, 64, 0.521);
-    width: 200px;
+    display: inline-block;
+    padding: 5px;
 }
 
 
@@ -120,4 +118,66 @@ footer {
     text-align: center;
     color: white;
     padding: 10px;
+}
+
+
+
+
+/***************************************/
+
+/* MEDIA QUERIES para responsividade */
+
+@media (max-width: 1200px) {
+    /* Ajuste para telas grandes, como desktops */
+    header > h1 {
+        font-size: 3em;
+    }
+
+    section {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Ajuste para tablets e telas médias */
+    header > h1 {
+        font-size: 2.5em;
+    }
+
+    section {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ajuste para telas de tablets menores */
+    header > h1 {
+        font-size: 2em;
+    }
+
+    section {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Ajuste para telas pequenas, como smartphones */
+    header > h1 {
+        font-size: 1.8em;
+    }
+
+    section {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 375px) {
+    /* Ajuste para telas muito pequenas */
+    header > h1 {
+        font-size: 1.5em;
+    }
+
+    section {
+        font-size: 1em;
+    }
 }
