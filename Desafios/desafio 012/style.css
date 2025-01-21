@@ -1,18 +1,41 @@
 @charset "UTF-8";
 
+
+
+               /*GERAIS*/
+
+
 * {
   margin: 0px;
   padding: 0px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Spicy+Rice&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Permanent+Marker&family=Spicy+Rice&display=swap');
+
+
+
+:root {
+    --font1: "Spicy Rice", serif;
+    --font2: "Permanent Marker", serif;
+    --font3: "Pacifico", serif;
+
 }
 
 
 html, body {
     min-height: 100vh;
     background-color: darkgray;
+    font-family: var(--font3);
 }
 
 
 
+/***************************************/
 
 
 
@@ -31,6 +54,7 @@ header {
 header > h1 {
     padding-top: 50px;
     font-variant: small-caps;
+    font-family: var(--font3);
 }
 
 header > p {
